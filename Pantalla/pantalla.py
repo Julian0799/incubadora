@@ -1,26 +1,11 @@
 import sys
 import numpy as np
 from pantalla import *
-
 import serial
 from PySide2 import QtCore
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAge as FigureCanvas
 import matplotlib.pyplot as plt
-class MiApp(QMainwindow):
-    def _init_(self):
-        super ()._init_()
-        self.ui = Ui_Mainwindow()
-        self.ui.setupUi(self)
-                 
-        self.grafica = Canvas grafica()
-        
-        
-                       
-                          
-        self.ui.grafica_uno.addwidget(self.grafica)
-        self.ui.grafica_dos.addWidget(self.grafica1)
-        self.ui.grafica_tres.addWidget(self.grafica2)
-        self.ui.grafica_cuatro.addwidget(self.grafica3)                                                          
+                                                          
 """
 ser=serial.Serial("COM5", 34800)
 edad = input('¿Encender led 1-->on #-->of ? ')
