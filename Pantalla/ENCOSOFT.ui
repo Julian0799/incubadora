@@ -7,7 +7,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1882</width>
+    <width>1982</width>
     <height>912</height>
    </rect>
   </property>
@@ -347,7 +347,7 @@ background-color: rgb(255, 255, 255);</string>
                   <property name="font">
                    <font>
                     <family>Arial</family>
-                    <pointsize>12</pointsize>
+                    <pointsize>9</pointsize>
                     <weight>75</weight>
                     <bold>true</bold>
                    </font>
@@ -374,7 +374,7 @@ border: 2px solid a000000;}</string>
                   <property name="font">
                    <font>
                     <family>Arial</family>
-                    <pointsize>14</pointsize>
+                    <pointsize>9</pointsize>
                     <weight>75</weight>
                     <bold>true</bold>
                    </font>
@@ -398,7 +398,7 @@ border: 2px solid a000000;}</string>
                   <property name="font">
                    <font>
                     <family>Arial</family>
-                    <pointsize>14</pointsize>
+                    <pointsize>9</pointsize>
                     <weight>75</weight>
                     <bold>true</bold>
                    </font>
@@ -410,10 +410,31 @@ border radus:20px;
 border: 2px solid a000000;}</string>
                   </property>
                   <property name="text">
-                   <string>Estable</string>
+                   <string>Temperatura Estable</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="lblhe">
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>9</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QFrame{
+background-color: rgb(255, 255, 255);
+border radus:20px;
+border: 2px solid a000000;}</string>
+                  </property>
+                  <property name="text">
+                   <string>Humedad Estable</string>
                   </property>
                  </widget>
                 </item>
@@ -422,7 +443,7 @@ border: 2px solid a000000;}</string>
                   <property name="font">
                    <font>
                     <family>Arial</family>
-                    <pointsize>14</pointsize>
+                    <pointsize>9</pointsize>
                     <weight>75</weight>
                     <bold>true</bold>
                    </font>
@@ -446,7 +467,7 @@ border: 2px solid a000000;}</string>
                   <property name="font">
                    <font>
                     <family>Arial</family>
-                    <pointsize>14</pointsize>
+                    <pointsize>9</pointsize>
                     <weight>75</weight>
                     <bold>true</bold>
                    </font>

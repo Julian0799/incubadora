@@ -18,12 +18,12 @@ void loop() {
     delay(1000);                       // waits 15ms for every swept degree
   }
 
-  for (int pos = 50; pos < 85; pos +=7 ) { 
+  for (int pos = 50; pos < 130; pos +=7 ) { 
     // in steps of 1 degree
     servoMotor.write(pos);              // tell servo to go to position in variable 'pos'
     delay(1000);                       // waits 15ms for every swept degree
   }
-  for (int pos = 85; pos >70; pos -=7) { 
+  for (int pos = 130; pos >70; pos -=7) { 
     // in steps of 1 degree
     servoMotor.write(pos);              // tell servo to go to position in variable 'pos'
     delay(1000);                       // waits 15ms for every swept degree
