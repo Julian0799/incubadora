@@ -18,10 +18,10 @@ Servo servoMotor;
 #define pin_motor             6         // D5: Rele de motor
 
 // Definicion de constantes
-#define temp_min              34      // Valor minimo de Temperatua
+#define temp_min              36.5      // Valor minimo de Temperatua
 #define temp_max              37.8      // Valor maximo de Temperatura
-#define hum_min               60        // Valor minimo de Humedad
-#define hum_max               65.9      // Valor maximo de Humedad
+#define hum_min               55        // Valor minimo de Humedad
+#define hum_max               85      // Valor maximo de Humedad
 #define tiempo_intervalo      100       // Cada 100ms predecir con la red neuronal
 
 // Parametros de la red neuronal
@@ -77,7 +77,7 @@ void loop() {
     estado_hum  = Normalizar(hum, hum_min, hum_max);
     Serial.println();
     Serial.println("Mediciones>> Temp:" + String(temp) + "C "+"Hum:" + String(hum) + "%");
-    Torito.println("Mediciones>> Temp:" + String(temp) + "|" +"C Hum:" + String(hum) + "%");
+    Torito.println("Temp:" + String(temp)+ "°C" + "|" +"Hum:" + String(hum) + "%");
     Serial.println("Normalizadas>> Temp:" + String(estado_temp) + " Hum:" + String(estado_hum));
     if (estado_hum=1){
       pinMode(pin_motor, HIGH);

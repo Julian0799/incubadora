@@ -1,34 +1,99 @@
+from bdb import Breakpoint
 import sys
-import numpy as np
-from pantalla import *
+from timeit import repeat #libreria basica
+from unicodedata import name
+from ui_ENCOSOFT import * #interfaz
+from PySide2 import QtCore 
 import serial
-from PySide2 import QtCore
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAge as FigureCanvas
-import matplotlib.pyplot as plt
-                                                          
-"""
-ser=serial.Serial("COM5", 34800)
-edad = input('¿Encender led 1-->on #-->of ? ')
-if edad=='1':
- ser.write(b'1')
-else: 
- ser.write(b'0')
+import time
+import numpy as np
+import re
+try:
+    ser = serial.Serial ("com4",38400)
+    print("Conectado") 
+             
+except TimeoutError:
+    print ("error")
+finally:
+    print ("done")
+    
 
-#print (edad)
-#String=ser.readline()
-#print(String)
+class Incuabdora(QMainWindow):
+    def __init__(self) -> None:
+        super().__init__()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)  
+        #self.ui.btniniciar.setEnabled()
+        #self.ui.btnterminar.setVisible(False)
+        self.ui.btnentrenar.clicked.connect(self.btn_entrenar)
+        self.ui.btniniciar.clicked.connect(self.btn_Iniciar)
+        self.ui.btnterminar.clicked.connect(self.btn_terminar)
+    def btn_entrenar(self):
+        print("Function 1 is active")
+        import entrenamiento
+        self.ui.btniniciar.setEnabled(True)
+        self.ui.btnentrenar.setEnabled(False)
+    def btn_terminar(self):
+        ser.close()
+        print("Conexion liberada")
+    def btn_Iniciar(self):
+        #self.ui.btnterminar.setVisible(True)  
+        
+        for i in range(1):
+            
+            if ser.in_waiting:
+                packet = ser.readline()
+                #print(packet.decode('utf'))
+                a=([float(s) for s in re.findall(r'-?\d+\.?\d*', packet.decode('utf'))])
+                #print(a)
+                for x in range(len(a)-1):
+                    t=(a[0])
+                    h=(a[1])
+                    print (t)
+                    print (h)
+                    self.ui.lbltemperatura.setText(str(t)+" °C")
+                    self.ui.lblhumedad.setText(str(h)+" %")
+                    if (t<36.5):
+                        self.ui.lblfocos.setStyleSheet("background:#FCFFA6;border: 2px solid a000000")
+                        self.ui.lbldt.setStyleSheet("background:orange;border: 2px solid a000000")
+                        self.ui.lble.setStyleSheet("background:white;border: 2px solid a000000")
+                        self.ui.lblit.setStyleSheet("background:white;border: 2px solid a000000")
+                        
+                        
+                    else:
+                        if (t>37.8):
+                            self.ui.lblventilador.setStyleSheet("background:#B8FFF9;border: 2px solid a000000")
+                            self.ui.lblit.setStyleSheet("background:red;border: 2px solid a000000")
+                            self.ui.lble.setStyleSheet("background:white;border: 2px solid a000000")
+                            self.ui.lbldt.setStyleSheet("background:white;border: 2px solid a000000")
+                        else:
+                            if(t>=36.5 and t<=37.8): 
+                                self.ui.lblfocos.setStyleSheet("background:#FCFFA6;border: 2px solid a000000")
+                                self.ui.lble.setStyleSheet("background:green;border: 2px solid a000000")
+                                self.ui.lbldt.setStyleSheet("background:white;border: 2px solid a000000")
+                                self.ui.lblit.setStyleSheet("background:white;border: 2px solid a000000")
+                    if (h<55):
+                        print('humedad baja')
+                        self.ui.lbldh.setStyleSheet("background:orange;border: 2px solid a000000")
+                        self.ui.lblfocos.setStyleSheet("background:#FCFFA6;border: 2px solid a000000")
+                    else:
+                        if (h>85):
+                            print('humedad alta')
+                            self.ui.lblih.setStyleSheet("background:red;border: 2px solid a000000")
+                            self.ui.lblelectrovalula.setStyleSheet("background:#FF5959;border: 2px solid a000000")
+                        else:
+                            if(h>=55 and h<=85):
+                                print('humedad estable') 
+                                self.ui.lble.setStyleSheet("background:green;border: 2px solid a000000") 
+            
 
+                       
+            
+        
 
-
-while (1):
-  while(ser.inWaiting()==0):
-   datoString=ser.readline()
-   a=datoString.splitlines()
-   b=str(a[0])
-   c=b.replace("d","")
-   d=c.replace("'","")
-   g=(d)
-   print (g)
-
-ser.close
-"""
+      
+if __name__ == "__main__":
+  app=QApplication(sys.argv)   
+  mi_app=Incuabdora()
+  mi_app.show()
+  sys.exit(app.exec_())   

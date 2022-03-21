@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ENCOSOFTUpQxCk.ui'
+## Form generated from reading UI file 'ENCOSOFT.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1882, 912)
+        MainWindow.resize(1777, 778)
         MainWindow.setStyleSheet(u"background-color: rgb(255, 255, 255);")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
@@ -110,17 +110,9 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_4.addWidget(self.label_3)
 
-        self.label_7 = QLabel(self.frame_2)
-        self.label_7.setObjectName(u"label_7")
-        self.label_7.setPixmap(QPixmap(u"Pantalla/images/Recurso3.png"))
-        self.label_7.setScaledContents(True)
-
-        self.verticalLayout_4.addWidget(self.label_7)
-
         self.lbltemperatura = QLabel(self.frame_2)
         self.lbltemperatura.setObjectName(u"lbltemperatura")
         font3 = QFont()
-        font3.setPointSize(14)
         font3.setBold(True)
         font3.setWeight(75)
         self.lbltemperatura.setFont(font3)
@@ -134,13 +126,6 @@ class Ui_MainWindow(object):
         self.label_4.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_4.addWidget(self.label_4)
-
-        self.label_8 = QLabel(self.frame_2)
-        self.label_8.setObjectName(u"label_8")
-        self.label_8.setPixmap(QPixmap(u"Pantalla/images/Recurso1.5.png"))
-        self.label_8.setScaledContents(True)
-
-        self.verticalLayout_4.addWidget(self.label_8)
 
         self.lblhumedad = QLabel(self.frame_2)
         self.lblhumedad.setObjectName(u"lblhumedad")
@@ -349,16 +334,6 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_3.addWidget(self.btniniciar)
 
-        self.btnterminar = QPushButton(self.frame_5)
-        self.btnterminar.setObjectName(u"btnterminar")
-        font7 = QFont()
-        font7.setFamily(u"Arial")
-        font7.setPointSize(10)
-        self.btnterminar.setFont(font7)
-        self.btnterminar.setStyleSheet(u"background-color: rgb(36, 161, 156);")
-
-        self.horizontalLayout_3.addWidget(self.btnterminar)
-
 
         self.verticalLayout_3.addWidget(self.frame_5)
 
@@ -388,10 +363,8 @@ class Ui_MainWindow(object):
         self.label.setText("")
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"Sensores", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Temperatura", None))
-        self.label_7.setText("")
         self.lbltemperatura.setText("")
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"Humedad", None))
-        self.label_8.setText("")
         self.lblhumedad.setText("")
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"Estado de la Incubadora", None))
         self.lbldt.setText(QCoreApplication.translate("MainWindow", u"Descenso de Temperatura", None))
@@ -405,6 +378,5 @@ class Ui_MainWindow(object):
         self.lblelectrovalula.setText(QCoreApplication.translate("MainWindow", u"Electrovalvula", None))
         self.btnentrenar.setText(QCoreApplication.translate("MainWindow", u"Entrenar", None))
         self.btniniciar.setText(QCoreApplication.translate("MainWindow", u"Iniciar", None))
-        self.btnterminar.setText(QCoreApplication.translate("MainWindow", u"Terminar", None))
     # retranslateUi
 

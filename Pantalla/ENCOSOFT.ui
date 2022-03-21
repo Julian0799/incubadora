@@ -7,12 +7,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1076</width>
-    <height>780</height>
+    <width>1882</width>
+    <height>912</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>ENCOSOFT</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -30,6 +33,10 @@
     </property>
     <item>
      <widget class="QFrame" name="frame">
+      <property name="styleSheet">
+       <string notr="true">
+background-color: rgb(255, 255, 255);</string>
+      </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
       </property>
@@ -59,6 +66,9 @@
            <width>16777215</width>
            <height>40</height>
           </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(8, 69, 148);</string>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -104,6 +114,9 @@
               <weight>75</weight>
               <bold>true</bold>
              </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(255, 255, 255);</string>
             </property>
             <property name="text">
              <string>Gestión de Incubadora</string>
@@ -211,19 +224,15 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_4">
+              <widget class="QLabel" name="label_7">
                <property name="text">
                 <string/>
                </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>images/Recurso 3.png</normaloff>images/Recurso 3.png</iconset>
+               <property name="pixmap">
+                <pixmap>images/Recurso3.png</pixmap>
                </property>
-               <property name="iconSize">
-                <size>
-                 <width>150</width>
-                 <height>150</height>
-                </size>
+               <property name="scaledContents">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
@@ -231,6 +240,7 @@
               <widget class="QLabel" name="lbltemperatura">
                <property name="font">
                 <font>
+                 <pointsize>14</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -261,19 +271,15 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_5">
+              <widget class="QLabel" name="label_8">
                <property name="text">
                 <string/>
                </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>images/Recurso 3.png</normaloff>images/Recurso 3.png</iconset>
+               <property name="pixmap">
+                <pixmap>images/Recurso1.5.png</pixmap>
                </property>
-               <property name="iconSize">
-                <size>
-                 <width>150</width>
-                 <height>150</height>
-                </size>
+               <property name="scaledContents">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
@@ -281,6 +287,7 @@
               <widget class="QLabel" name="lblhumedad">
                <property name="font">
                 <font>
+                 <pointsize>14</pointsize>
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
@@ -305,7 +312,7 @@
              <enum>QFrame::Raised</enum>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_6">
-             <item>
+             <item alignment="Qt::AlignHCenter">
               <widget class="QLabel" name="label_6">
                <property name="font">
                 <font>
@@ -324,7 +331,7 @@
               </widget>
              </item>
              <item>
-              <layout class="QVBoxLayout" name="verticalLayout_5"/>
+              <layout class="QVBoxLayout" name="grafica"/>
              </item>
              <item>
               <widget class="QFrame" name="frame_6">
@@ -336,7 +343,7 @@
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout_4">
                 <item>
-                 <widget class="QLabel" name="label_7">
+                 <widget class="QLabel" name="lbldt">
                   <property name="font">
                    <font>
                     <family>Arial</family>
@@ -344,6 +351,12 @@
                     <weight>75</weight>
                     <bold>true</bold>
                    </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QFrame{
+background-color: rgb(255, 255, 255);
+border radus:20px;
+border: 2px solid a000000;}</string>
                   </property>
                   <property name="text">
                    <string>Descenso de Temperatura</string>
@@ -357,7 +370,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="label_8">
+                 <widget class="QLabel" name="lbldh">
                   <property name="font">
                    <font>
                     <family>Arial</family>
@@ -365,6 +378,12 @@
                     <weight>75</weight>
                     <bold>true</bold>
                    </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QFrame{
+background-color: rgb(255, 255, 255);
+border radus:20px;
+border: 2px solid a000000;}</string>
                   </property>
                   <property name="text">
                    <string>Decremento de la Humedad</string>
@@ -375,7 +394,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="label_10">
+                 <widget class="QLabel" name="lble">
                   <property name="font">
                    <font>
                     <family>Arial</family>
@@ -383,6 +402,12 @@
                     <weight>75</weight>
                     <bold>true</bold>
                    </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QFrame{
+background-color: rgb(255, 255, 255);
+border radus:20px;
+border: 2px solid a000000;}</string>
                   </property>
                   <property name="text">
                    <string>Estable</string>
@@ -393,7 +418,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="label_11">
+                 <widget class="QLabel" name="lblih">
                   <property name="font">
                    <font>
                     <family>Arial</family>
@@ -401,6 +426,12 @@
                     <weight>75</weight>
                     <bold>true</bold>
                    </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QFrame{
+background-color: rgb(255, 255, 255);
+border radus:20px;
+border: 2px solid a000000;}</string>
                   </property>
                   <property name="text">
                    <string>Incremento de la Humedad </string>
@@ -411,7 +442,7 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="label_12">
+                 <widget class="QLabel" name="lblit">
                   <property name="font">
                    <font>
                     <family>Arial</family>
@@ -419,6 +450,12 @@
                     <weight>75</weight>
                     <bold>true</bold>
                    </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QFrame{
+background-color: rgb(255, 255, 255);
+border radus:20px;
+border: 2px solid a000000;}</string>
                   </property>
                   <property name="text">
                    <string>Incremento de la Temperatura</string>
@@ -470,6 +507,12 @@
                  <bold>true</bold>
                 </font>
                </property>
+               <property name="styleSheet">
+                <string notr="true">QFrame{
+background-color: rgb(255, 255, 255);
+border radus:20px;
+border: 2px solid a000000;}</string>
+               </property>
                <property name="text">
                 <string>Ventilador</string>
                </property>
@@ -488,6 +531,12 @@
                  <bold>true</bold>
                 </font>
                </property>
+               <property name="styleSheet">
+                <string notr="true">QFrame{
+background-color: rgb(255, 255, 255);
+border radus:20px;
+border: 2px solid a000000;}</string>
+               </property>
                <property name="text">
                 <string>Focos</string>
                </property>
@@ -505,6 +554,12 @@
                  <weight>75</weight>
                  <bold>true</bold>
                 </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QFrame{
+background-color: rgb(255, 255, 255);
+border radus:20px;
+border: 2px solid a000000;}</string>
                </property>
                <property name="text">
                 <string>Electrovalvula</string>
@@ -527,11 +582,29 @@
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout_3">
                 <item>
-                 <widget class="QPushButton" name="pushButton_6">
+                 <widget class="QPushButton" name="btnentrenar">
                   <property name="palette">
                    <palette>
                     <active>
                      <colorrole role="Button">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="255">
+                        <red>36</red>
+                        <green>161</green>
+                        <blue>156</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Base">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="255">
+                        <red>36</red>
+                        <green>161</green>
+                        <blue>156</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Window">
                       <brush brushstyle="SolidPattern">
                        <color alpha="255">
                         <red>36</red>
@@ -551,9 +624,45 @@
                        </color>
                       </brush>
                      </colorrole>
+                     <colorrole role="Base">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="255">
+                        <red>36</red>
+                        <green>161</green>
+                        <blue>156</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Window">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="255">
+                        <red>36</red>
+                        <green>161</green>
+                        <blue>156</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
                     </inactive>
                     <disabled>
                      <colorrole role="Button">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="255">
+                        <red>36</red>
+                        <green>161</green>
+                        <blue>156</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Base">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="255">
+                        <red>36</red>
+                        <green>161</green>
+                        <blue>156</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Window">
                       <brush brushstyle="SolidPattern">
                        <color alpha="255">
                         <red>36</red>
@@ -569,15 +678,15 @@
                    <font>
                     <family>Arial</family>
                     <pointsize>10</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
+                    <weight>50</weight>
+                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="autoFillBackground">
                    <bool>false</bool>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true"/>
+                   <string notr="true">background-color: rgb(36, 161, 156);</string>
                   </property>
                   <property name="text">
                    <string>Entrenar</string>
@@ -594,16 +703,34 @@
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButton_7">
+                 <widget class="QPushButton" name="btniniciar">
                   <property name="palette">
                    <palette>
                     <active>
                      <colorrole role="Button">
                       <brush brushstyle="SolidPattern">
                        <color alpha="255">
-                        <red>255</red>
-                        <green>0</green>
-                        <blue>0</blue>
+                        <red>228</red>
+                        <green>88</green>
+                        <blue>38</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Base">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="255">
+                        <red>228</red>
+                        <green>88</green>
+                        <blue>38</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Window">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="255">
+                        <red>228</red>
+                        <green>88</green>
+                        <blue>38</blue>
                        </color>
                       </brush>
                      </colorrole>
@@ -612,9 +739,27 @@
                      <colorrole role="Button">
                       <brush brushstyle="SolidPattern">
                        <color alpha="255">
-                        <red>255</red>
-                        <green>0</green>
-                        <blue>0</blue>
+                        <red>228</red>
+                        <green>88</green>
+                        <blue>38</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Base">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="255">
+                        <red>228</red>
+                        <green>88</green>
+                        <blue>38</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Window">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="255">
+                        <red>228</red>
+                        <green>88</green>
+                        <blue>38</blue>
                        </color>
                       </brush>
                      </colorrole>
@@ -623,9 +768,27 @@
                      <colorrole role="Button">
                       <brush brushstyle="SolidPattern">
                        <color alpha="255">
-                        <red>255</red>
-                        <green>0</green>
-                        <blue>0</blue>
+                        <red>228</red>
+                        <green>88</green>
+                        <blue>38</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Base">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="255">
+                        <red>228</red>
+                        <green>88</green>
+                        <blue>38</blue>
+                       </color>
+                      </brush>
+                     </colorrole>
+                     <colorrole role="Window">
+                      <brush brushstyle="SolidPattern">
+                       <color alpha="255">
+                        <red>228</red>
+                        <green>88</green>
+                        <blue>38</blue>
                        </color>
                       </brush>
                      </colorrole>
@@ -636,12 +799,31 @@
                    <font>
                     <family>Arial</family>
                     <pointsize>10</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
+                    <weight>50</weight>
+                    <bold>false</bold>
                    </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(228, 88, 38);</string>
                   </property>
                   <property name="text">
                    <string>Iniciar</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="btnterminar">
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(36, 161, 156);</string>
+                  </property>
+                  <property name="text">
+                   <string>Terminar</string>
                   </property>
                  </widget>
                 </item>
