@@ -86,7 +86,7 @@ class Incuabdora(QMainWindow):
                         print('humedad baja')
                         self.ui.lbldh.setStyleSheet("background:orange;border: 2px solid a000000")
                         self.ui.lblfocos.setStyleSheet("background:#FFFDDE;border: 2px solid a000000")
-                        self.ui.lblelectrovalula.setStyleSheet("background:#FFB5B5;border: 2px solid a000000")
+                        self.ui.lblelectrovalula.setStyleSheet("background:white;border: 2px solid a000000")
                         self.ui.lblhe.setStyleSheet("background:white;border: 2px solid a000000")
                         self.ui.lblih.setStyleSheet("background:white;border: 2px solid a000000")
                     else:

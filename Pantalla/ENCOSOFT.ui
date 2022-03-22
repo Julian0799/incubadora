@@ -182,6 +182,12 @@ background-color: rgb(255, 255, 255);</string>
           </property>
           <item>
            <widget class="QFrame" name="frame_2">
+            <property name="maximumSize">
+             <size>
+              <width>240</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
             </property>
@@ -334,20 +340,20 @@ background-color: rgb(255, 255, 255);</string>
               <layout class="QVBoxLayout" name="grafica"/>
              </item>
              <item>
-              <widget class="QFrame" name="frame_6">
+              <widget class="QFrame" name="frame_7">
                <property name="frameShape">
                 <enum>QFrame::StyledPanel</enum>
                </property>
                <property name="frameShadow">
                 <enum>QFrame::Raised</enum>
                </property>
-               <layout class="QHBoxLayout" name="horizontalLayout_4">
+               <layout class="QHBoxLayout" name="horizontalLayout_5">
                 <item>
                  <widget class="QLabel" name="lbldt">
                   <property name="font">
                    <font>
                     <family>Arial</family>
-                    <pointsize>9</pointsize>
+                    <pointsize>14</pointsize>
                     <weight>75</weight>
                     <bold>true</bold>
                    </font>
@@ -370,35 +376,11 @@ border: 2px solid a000000;}</string>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="lbldh">
-                  <property name="font">
-                   <font>
-                    <family>Arial</family>
-                    <pointsize>9</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QFrame{
-background-color: rgb(255, 255, 255);
-border radus:20px;
-border: 2px solid a000000;}</string>
-                  </property>
-                  <property name="text">
-                   <string>Decremento de la Humedad</string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignCenter</set>
-                  </property>
-                 </widget>
-                </item>
-                <item>
                  <widget class="QLabel" name="lble">
                   <property name="font">
                    <font>
                     <family>Arial</family>
-                    <pointsize>9</pointsize>
+                    <pointsize>14</pointsize>
                     <weight>75</weight>
                     <bold>true</bold>
                    </font>
@@ -418,56 +400,11 @@ border: 2px solid a000000;}</string>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="lblhe">
-                  <property name="font">
-                   <font>
-                    <family>Arial</family>
-                    <pointsize>9</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QFrame{
-background-color: rgb(255, 255, 255);
-border radus:20px;
-border: 2px solid a000000;}</string>
-                  </property>
-                  <property name="text">
-                   <string>Humedad Estable</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QLabel" name="lblih">
-                  <property name="font">
-                   <font>
-                    <family>Arial</family>
-                    <pointsize>9</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QFrame{
-background-color: rgb(255, 255, 255);
-border radus:20px;
-border: 2px solid a000000;}</string>
-                  </property>
-                  <property name="text">
-                   <string>Incremento de la Humedad </string>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignCenter</set>
-                  </property>
-                 </widget>
-                </item>
-                <item>
                  <widget class="QLabel" name="lblit">
                   <property name="font">
                    <font>
                     <family>Arial</family>
-                    <pointsize>9</pointsize>
+                    <pointsize>14</pointsize>
                     <weight>75</weight>
                     <bold>true</bold>
                    </font>
@@ -489,11 +426,101 @@ border: 2px solid a000000;}</string>
                </layout>
               </widget>
              </item>
+             <item>
+              <widget class="QFrame" name="frame_6">
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_4">
+                <item>
+                 <widget class="QLabel" name="lbldh">
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>14</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QFrame{
+background-color: rgb(255, 255, 255);
+border radus:20px;
+border: 2px solid a000000;}</string>
+                  </property>
+                  <property name="text">
+                   <string>Descenso de la Humedad</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="lblhe">
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>14</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QFrame{
+background-color: rgb(255, 255, 255);
+border radus:20px;
+border: 2px solid a000000;}</string>
+                  </property>
+                  <property name="text">
+                   <string>Humedad Estable</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="lblih">
+                  <property name="font">
+                   <font>
+                    <family>Arial</family>
+                    <pointsize>14</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QFrame{
+background-color: rgb(255, 255, 255);
+border radus:20px;
+border: 2px solid a000000;}</string>
+                  </property>
+                  <property name="text">
+                   <string>Incremento de la Humedad </string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
             </layout>
            </widget>
           </item>
           <item>
            <widget class="QFrame" name="frame_4">
+            <property name="maximumSize">
+             <size>
+              <width>240</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
             </property>
@@ -829,22 +856,6 @@ border: 2px solid a000000;}</string>
                   </property>
                   <property name="text">
                    <string>Iniciar</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="btnterminar">
-                  <property name="font">
-                   <font>
-                    <family>Arial</family>
-                    <pointsize>10</pointsize>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">background-color: rgb(36, 161, 156);</string>
-                  </property>
-                  <property name="text">
-                   <string>Terminar</string>
                   </property>
                  </widget>
                 </item>

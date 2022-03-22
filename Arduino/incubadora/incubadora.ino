@@ -108,8 +108,9 @@ void Obtener_Mediciones() {
   // Obtener Humedad en %
   hum = dht.readHumidity();
   if ((hum >= 0) && (temp <= 100)) {} else hum = 0;
-    float t= dht.readTemperature();
-    temp=t;
+  
+  float t= dht.readTemperature();
+  temp=t;
   Serial.print("Temperatura: ");
   Serial.print(temp2);
   Serial.print(" *C ");
