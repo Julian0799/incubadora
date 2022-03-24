@@ -1,6 +1,8 @@
 from bdb import Breakpoint
 import sys
-from timeit import repeat #libreria basica
+from timeit import repeat
+from turtle import *
+import turtle #libreria basica
 from unicodedata import name
 from ui_ENCOSOFT import * #interfaz
 from PySide2 import QtCore 
@@ -8,10 +10,13 @@ import serial
 import time
 import numpy as np
 import re
+
 from tkinter import Canvas #grafica
 from unicodedata import name
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 import matplotlib.pyplot as plt
+setup(0, 0, 0, 0)
+
 try:
     ser = serial.Serial ("com4",38400)
     print("Conectado") 
@@ -31,24 +36,36 @@ class Incuabdora(QMainWindow):
         #self.ui.btniniciar.setVisible(False)
         self.ui.btnentrenar.clicked.connect(self.btn_entrenar)
         self.ui.btniniciar.clicked.connect(self.btn_Iniciar)
+        self.ui.btnterminar.setVisible(False)
+        self.ui.btnterminar.clicked.connect(self.btn_terminar)
         #self.ser= serial.Serial ("com4",38400)
-        
+        ser.close()
         #grafica
-        self.grafica=Canvas_grafica()  
-        self.ui.grafica.addWidget(self.grafica)
+        #self.grafica=Canvas_grafica()  
+        #self.ui.grafica.addWidget(self.grafica)
     #///////////////////////////////////////// 
     def btn_entrenar(self):
+        
         print("Function 1 is active")
         import entrenamiento
         #self.ui.btniniciar.setEnabled(True)
         #self.ui.btnentrenar.setEnabled(False)
     #/////////////////////////////////////////
+    def btn_terminar(self):
+        ser.close()
+        print("Cerro conexión")
+        self.ui.btnentrenar.setVisible(True)
+        self.ui.btnterminar.setVisible(False)
+        
+    #/////////////////////////////////////////
     def btn_Iniciar(self):
+        ser.open()
+        self.ui.btnterminar.setVisible(True)
+        self.ui.btnentrenar.setVisible(False)
         #self.ui.btnterminar.setVisible(True)  
         
-        for i in range(1):
-            
-            if ser.in_waiting:
+        while True:
+                      
                 packet = ser.readline()
                 #print(packet.decode('utf'))
                 a=([float(s) for s in re.findall(r'-?\d+\.?\d*', packet.decode('utf'))])
@@ -103,7 +120,7 @@ class Incuabdora(QMainWindow):
                                 self.ui.lblhe.setStyleSheet("background:green;border: 2px solid a000000") 
                                 self.ui.lbldh.setStyleSheet("background:white;border: 2px solid a000000")
                                 self.ui.lblih.setStyleSheet("background:white;border: 2px solid a000000")
-            
+                update()    
 class Canvas_grafica(FigureCanvas):
     def __init__(self,parent=None):
       self.fig , self.ax = plt.subplots(1, dpi=100, figsize=(5, 5),

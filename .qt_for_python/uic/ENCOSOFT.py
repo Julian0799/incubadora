@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1777, 778)
+        MainWindow.resize(1982, 912)
         MainWindow.setStyleSheet(u"background-color: rgb(255, 255, 255);")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
@@ -88,6 +88,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.frame_2 = QFrame(self.frm_cuerpo)
         self.frame_2.setObjectName(u"frame_2")
+        self.frame_2.setMaximumSize(QSize(240, 16777215))
         self.frame_2.setFrameShape(QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QFrame.Raised)
         self.verticalLayout_4 = QVBoxLayout(self.frame_2)
@@ -110,9 +111,17 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_4.addWidget(self.label_3)
 
+        self.label_7 = QLabel(self.frame_2)
+        self.label_7.setObjectName(u"label_7")
+        self.label_7.setPixmap(QPixmap(u"images/Recurso3.png"))
+        self.label_7.setScaledContents(True)
+
+        self.verticalLayout_4.addWidget(self.label_7)
+
         self.lbltemperatura = QLabel(self.frame_2)
         self.lbltemperatura.setObjectName(u"lbltemperatura")
         font3 = QFont()
+        font3.setPointSize(14)
         font3.setBold(True)
         font3.setWeight(75)
         self.lbltemperatura.setFont(font3)
@@ -126,6 +135,13 @@ class Ui_MainWindow(object):
         self.label_4.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_4.addWidget(self.label_4)
+
+        self.label_8 = QLabel(self.frame_2)
+        self.label_8.setObjectName(u"label_8")
+        self.label_8.setPixmap(QPixmap(u"images/Recurso1.5.png"))
+        self.label_8.setScaledContents(True)
+
+        self.verticalLayout_4.addWidget(self.label_8)
 
         self.lblhumedad = QLabel(self.frame_2)
         self.lblhumedad.setObjectName(u"lblhumedad")
@@ -155,20 +171,15 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_6.addLayout(self.grafica)
 
-        self.frame_6 = QFrame(self.frame_3)
-        self.frame_6.setObjectName(u"frame_6")
-        self.frame_6.setFrameShape(QFrame.StyledPanel)
-        self.frame_6.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_4 = QHBoxLayout(self.frame_6)
-        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
-        self.lbldt = QLabel(self.frame_6)
+        self.frame_7 = QFrame(self.frame_3)
+        self.frame_7.setObjectName(u"frame_7")
+        self.frame_7.setFrameShape(QFrame.StyledPanel)
+        self.frame_7.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_5 = QHBoxLayout(self.frame_7)
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.lbldt = QLabel(self.frame_7)
         self.lbldt.setObjectName(u"lbldt")
-        font4 = QFont()
-        font4.setFamily(u"Arial")
-        font4.setPointSize(12)
-        font4.setBold(True)
-        font4.setWeight(75)
-        self.lbldt.setFont(font4)
+        self.lbldt.setFont(font)
         self.lbldt.setStyleSheet(u"QFrame{\n"
 "background-color: rgb(255, 255, 255);\n"
 "border radus:20px;\n"
@@ -176,8 +187,39 @@ class Ui_MainWindow(object):
         self.lbldt.setAlignment(Qt.AlignCenter)
         self.lbldt.setMargin(3)
 
-        self.horizontalLayout_4.addWidget(self.lbldt)
+        self.horizontalLayout_5.addWidget(self.lbldt)
 
+        self.lble = QLabel(self.frame_7)
+        self.lble.setObjectName(u"lble")
+        self.lble.setFont(font)
+        self.lble.setStyleSheet(u"QFrame{\n"
+"background-color: rgb(255, 255, 255);\n"
+"border radus:20px;\n"
+"border: 2px solid a000000;}")
+        self.lble.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_5.addWidget(self.lble)
+
+        self.lblit = QLabel(self.frame_7)
+        self.lblit.setObjectName(u"lblit")
+        self.lblit.setFont(font)
+        self.lblit.setStyleSheet(u"QFrame{\n"
+"background-color: rgb(255, 255, 255);\n"
+"border radus:20px;\n"
+"border: 2px solid a000000;}")
+        self.lblit.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_5.addWidget(self.lblit)
+
+
+        self.verticalLayout_6.addWidget(self.frame_7)
+
+        self.frame_6 = QFrame(self.frame_3)
+        self.frame_6.setObjectName(u"frame_6")
+        self.frame_6.setFrameShape(QFrame.StyledPanel)
+        self.frame_6.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_4 = QHBoxLayout(self.frame_6)
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.lbldh = QLabel(self.frame_6)
         self.lbldh.setObjectName(u"lbldh")
         self.lbldh.setFont(font)
@@ -189,16 +231,16 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_4.addWidget(self.lbldh)
 
-        self.lble = QLabel(self.frame_6)
-        self.lble.setObjectName(u"lble")
-        self.lble.setFont(font)
-        self.lble.setStyleSheet(u"QFrame{\n"
+        self.lblhe = QLabel(self.frame_6)
+        self.lblhe.setObjectName(u"lblhe")
+        self.lblhe.setFont(font)
+        self.lblhe.setStyleSheet(u"QFrame{\n"
 "background-color: rgb(255, 255, 255);\n"
 "border radus:20px;\n"
 "border: 2px solid a000000;}")
-        self.lble.setAlignment(Qt.AlignCenter)
+        self.lblhe.setAlignment(Qt.AlignCenter)
 
-        self.horizontalLayout_4.addWidget(self.lble)
+        self.horizontalLayout_4.addWidget(self.lblhe)
 
         self.lblih = QLabel(self.frame_6)
         self.lblih.setObjectName(u"lblih")
@@ -211,17 +253,6 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_4.addWidget(self.lblih)
 
-        self.lblit = QLabel(self.frame_6)
-        self.lblit.setObjectName(u"lblit")
-        self.lblit.setFont(font)
-        self.lblit.setStyleSheet(u"QFrame{\n"
-"background-color: rgb(255, 255, 255);\n"
-"border radus:20px;\n"
-"border: 2px solid a000000;}")
-        self.lblit.setAlignment(Qt.AlignCenter)
-
-        self.horizontalLayout_4.addWidget(self.lblit)
-
 
         self.verticalLayout_6.addWidget(self.frame_6)
 
@@ -230,6 +261,7 @@ class Ui_MainWindow(object):
 
         self.frame_4 = QFrame(self.frm_cuerpo)
         self.frame_4.setObjectName(u"frame_4")
+        self.frame_4.setMaximumSize(QSize(240, 16777215))
         self.frame_4.setFrameShape(QFrame.StyledPanel)
         self.frame_4.setFrameShadow(QFrame.Raised)
         self.verticalLayout_3 = QVBoxLayout(self.frame_4)
@@ -243,12 +275,12 @@ class Ui_MainWindow(object):
 
         self.lblventilador = QLabel(self.frame_4)
         self.lblventilador.setObjectName(u"lblventilador")
-        font5 = QFont()
-        font5.setFamily(u"Arial")
-        font5.setPointSize(10)
-        font5.setBold(True)
-        font5.setWeight(75)
-        self.lblventilador.setFont(font5)
+        font4 = QFont()
+        font4.setFamily(u"Arial")
+        font4.setPointSize(10)
+        font4.setBold(True)
+        font4.setWeight(75)
+        self.lblventilador.setFont(font4)
         self.lblventilador.setStyleSheet(u"QFrame{\n"
 "background-color: rgb(255, 255, 255);\n"
 "border radus:20px;\n"
@@ -259,7 +291,7 @@ class Ui_MainWindow(object):
 
         self.lblfocos = QLabel(self.frame_4)
         self.lblfocos.setObjectName(u"lblfocos")
-        self.lblfocos.setFont(font5)
+        self.lblfocos.setFont(font4)
         self.lblfocos.setStyleSheet(u"QFrame{\n"
 "background-color: rgb(255, 255, 255);\n"
 "border radus:20px;\n"
@@ -270,7 +302,7 @@ class Ui_MainWindow(object):
 
         self.lblelectrovalula = QLabel(self.frame_4)
         self.lblelectrovalula.setObjectName(u"lblelectrovalula")
-        self.lblelectrovalula.setFont(font5)
+        self.lblelectrovalula.setFont(font4)
         self.lblelectrovalula.setStyleSheet(u"QFrame{\n"
 "background-color: rgb(255, 255, 255);\n"
 "border radus:20px;\n"
@@ -284,12 +316,41 @@ class Ui_MainWindow(object):
         self.frame_5.setMouseTracking(False)
         self.frame_5.setFrameShape(QFrame.StyledPanel)
         self.frame_5.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_3 = QHBoxLayout(self.frame_5)
+        self.verticalLayout_5 = QVBoxLayout(self.frame_5)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.frame_8 = QFrame(self.frame_5)
+        self.frame_8.setObjectName(u"frame_8")
+        self.frame_8.setFrameShape(QFrame.StyledPanel)
+        self.frame_8.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_3 = QHBoxLayout(self.frame_8)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.btnentrenar = QPushButton(self.frame_5)
-        self.btnentrenar.setObjectName(u"btnentrenar")
+        self.iniciar = QPushButton(self.frame_8)
+        self.iniciar.setObjectName(u"iniciar")
+
+        self.horizontalLayout_3.addWidget(self.iniciar)
+
+        self.terminar = QPushButton(self.frame_8)
+        self.terminar.setObjectName(u"terminar")
+
+        self.horizontalLayout_3.addWidget(self.terminar)
+
+        self.limpiar = QPushButton(self.frame_8)
+        self.limpiar.setObjectName(u"limpiar")
+
+        self.horizontalLayout_3.addWidget(self.limpiar)
+
+        self.salir = QPushButton(self.frame_8)
+        self.salir.setObjectName(u"salir")
+
+        self.horizontalLayout_3.addWidget(self.salir)
+
+
+        self.verticalLayout_5.addWidget(self.frame_8)
+
+        self.btniniciar = QPushButton(self.frame_5)
+        self.btniniciar.setObjectName(u"btniniciar")
         palette = QPalette()
-        brush = QBrush(QColor(36, 161, 156, 255))
+        brush = QBrush(QColor(228, 88, 38, 255))
         brush.setStyle(Qt.SolidPattern)
         palette.setBrush(QPalette.Active, QPalette.Button, brush)
         palette.setBrush(QPalette.Active, QPalette.Base, brush)
@@ -300,24 +361,21 @@ class Ui_MainWindow(object):
         palette.setBrush(QPalette.Disabled, QPalette.Button, brush)
         palette.setBrush(QPalette.Disabled, QPalette.Base, brush)
         palette.setBrush(QPalette.Disabled, QPalette.Window, brush)
-        self.btnentrenar.setPalette(palette)
-        font6 = QFont()
-        font6.setFamily(u"Arial")
-        font6.setPointSize(10)
-        font6.setBold(False)
-        font6.setWeight(50)
-        self.btnentrenar.setFont(font6)
-        self.btnentrenar.setAutoFillBackground(False)
-        self.btnentrenar.setStyleSheet(u"background-color: rgb(36, 161, 156);")
-        self.btnentrenar.setAutoDefault(False)
-        self.btnentrenar.setFlat(False)
+        self.btniniciar.setPalette(palette)
+        font5 = QFont()
+        font5.setFamily(u"Arial")
+        font5.setPointSize(10)
+        font5.setBold(False)
+        font5.setWeight(50)
+        self.btniniciar.setFont(font5)
+        self.btniniciar.setStyleSheet(u"background-color: rgb(228, 88, 38);")
 
-        self.horizontalLayout_3.addWidget(self.btnentrenar)
+        self.verticalLayout_5.addWidget(self.btniniciar)
 
-        self.btniniciar = QPushButton(self.frame_5)
-        self.btniniciar.setObjectName(u"btniniciar")
+        self.btnentrenar = QPushButton(self.frame_5)
+        self.btnentrenar.setObjectName(u"btnentrenar")
         palette1 = QPalette()
-        brush1 = QBrush(QColor(228, 88, 38, 255))
+        brush1 = QBrush(QColor(36, 161, 156, 255))
         brush1.setStyle(Qt.SolidPattern)
         palette1.setBrush(QPalette.Active, QPalette.Button, brush1)
         palette1.setBrush(QPalette.Active, QPalette.Base, brush1)
@@ -328,11 +386,14 @@ class Ui_MainWindow(object):
         palette1.setBrush(QPalette.Disabled, QPalette.Button, brush1)
         palette1.setBrush(QPalette.Disabled, QPalette.Base, brush1)
         palette1.setBrush(QPalette.Disabled, QPalette.Window, brush1)
-        self.btniniciar.setPalette(palette1)
-        self.btniniciar.setFont(font6)
-        self.btniniciar.setStyleSheet(u"background-color: rgb(228, 88, 38);")
+        self.btnentrenar.setPalette(palette1)
+        self.btnentrenar.setFont(font5)
+        self.btnentrenar.setAutoFillBackground(False)
+        self.btnentrenar.setStyleSheet(u"background-color: rgb(36, 161, 156);")
+        self.btnentrenar.setAutoDefault(False)
+        self.btnentrenar.setFlat(False)
 
-        self.horizontalLayout_3.addWidget(self.btniniciar)
+        self.verticalLayout_5.addWidget(self.btnentrenar)
 
 
         self.verticalLayout_3.addWidget(self.frame_5)
@@ -363,20 +424,27 @@ class Ui_MainWindow(object):
         self.label.setText("")
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"Sensores", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Temperatura", None))
+        self.label_7.setText("")
         self.lbltemperatura.setText("")
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"Humedad", None))
+        self.label_8.setText("")
         self.lblhumedad.setText("")
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"Estado de la Incubadora", None))
         self.lbldt.setText(QCoreApplication.translate("MainWindow", u"Descenso de Temperatura", None))
-        self.lbldh.setText(QCoreApplication.translate("MainWindow", u"Decremento de la Humedad", None))
-        self.lble.setText(QCoreApplication.translate("MainWindow", u"Estable", None))
-        self.lblih.setText(QCoreApplication.translate("MainWindow", u"Incremento de la Humedad ", None))
+        self.lble.setText(QCoreApplication.translate("MainWindow", u"Temperatura Estable", None))
         self.lblit.setText(QCoreApplication.translate("MainWindow", u"Incremento de la Temperatura", None))
+        self.lbldh.setText(QCoreApplication.translate("MainWindow", u"Descenso de la Humedad", None))
+        self.lblhe.setText(QCoreApplication.translate("MainWindow", u"Humedad Estable", None))
+        self.lblih.setText(QCoreApplication.translate("MainWindow", u"Incremento de la Humedad ", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"Control", None))
         self.lblventilador.setText(QCoreApplication.translate("MainWindow", u"Ventilador", None))
         self.lblfocos.setText(QCoreApplication.translate("MainWindow", u"Focos", None))
         self.lblelectrovalula.setText(QCoreApplication.translate("MainWindow", u"Electrovalvula", None))
-        self.btnentrenar.setText(QCoreApplication.translate("MainWindow", u"Entrenar", None))
+        self.iniciar.setText(QCoreApplication.translate("MainWindow", u"iniciar", None))
+        self.terminar.setText(QCoreApplication.translate("MainWindow", u"terminar", None))
+        self.limpiar.setText(QCoreApplication.translate("MainWindow", u"limpiar", None))
+        self.salir.setText(QCoreApplication.translate("MainWindow", u"salir", None))
         self.btniniciar.setText(QCoreApplication.translate("MainWindow", u"Iniciar", None))
+        self.btnentrenar.setText(QCoreApplication.translate("MainWindow", u"Entrenar", None))
     # retranslateUi
 

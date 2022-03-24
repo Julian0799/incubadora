@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ENCOSOFTYbzqvr.ui'
+## Form generated from reading UI file 'ENCOSOFTdNMDbI.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -318,6 +318,15 @@ class Ui_MainWindow(object):
         self.frame_5.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_3 = QHBoxLayout(self.frame_5)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.btnterminar = QPushButton(self.frame_5)
+        self.btnterminar.setObjectName(u"btnterminar")
+        font5 = QFont()
+        font5.setPointSize(10)
+        self.btnterminar.setFont(font5)
+        self.btnterminar.setStyleSheet(u"background-color: rgb(36, 161, 156);")
+
+        self.horizontalLayout_3.addWidget(self.btnterminar)
+
         self.btnentrenar = QPushButton(self.frame_5)
         self.btnentrenar.setObjectName(u"btnentrenar")
         palette = QPalette()
@@ -333,12 +342,12 @@ class Ui_MainWindow(object):
         palette.setBrush(QPalette.Disabled, QPalette.Base, brush)
         palette.setBrush(QPalette.Disabled, QPalette.Window, brush)
         self.btnentrenar.setPalette(palette)
-        font5 = QFont()
-        font5.setFamily(u"Arial")
-        font5.setPointSize(10)
-        font5.setBold(False)
-        font5.setWeight(50)
-        self.btnentrenar.setFont(font5)
+        font6 = QFont()
+        font6.setFamily(u"Arial")
+        font6.setPointSize(10)
+        font6.setBold(False)
+        font6.setWeight(50)
+        self.btnentrenar.setFont(font6)
         self.btnentrenar.setAutoFillBackground(False)
         self.btnentrenar.setStyleSheet(u"background-color: rgb(36, 161, 156);")
         self.btnentrenar.setAutoDefault(False)
@@ -361,7 +370,7 @@ class Ui_MainWindow(object):
         palette1.setBrush(QPalette.Disabled, QPalette.Base, brush1)
         palette1.setBrush(QPalette.Disabled, QPalette.Window, brush1)
         self.btniniciar.setPalette(palette1)
-        self.btniniciar.setFont(font5)
+        self.btniniciar.setFont(font6)
         self.btniniciar.setStyleSheet(u"background-color: rgb(228, 88, 38);")
 
         self.horizontalLayout_3.addWidget(self.btniniciar)
@@ -411,6 +420,7 @@ class Ui_MainWindow(object):
         self.lblventilador.setText(QCoreApplication.translate("MainWindow", u"Ventilador", None))
         self.lblfocos.setText(QCoreApplication.translate("MainWindow", u"Focos", None))
         self.lblelectrovalula.setText(QCoreApplication.translate("MainWindow", u"Electrovalvula", None))
+        self.btnterminar.setText(QCoreApplication.translate("MainWindow", u"Terminar", None))
         self.btnentrenar.setText(QCoreApplication.translate("MainWindow", u"Entrenar", None))
         self.btniniciar.setText(QCoreApplication.translate("MainWindow", u"Iniciar", None))
     # retranslateUi

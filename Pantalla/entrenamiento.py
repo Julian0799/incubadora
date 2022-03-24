@@ -149,6 +149,11 @@ print('\n')
 print('Pesos de capa oculta y capa de salida:')
 print(to_str('pesos_capa_oculta', pesos[0]))
 print(to_str('pesos_capa_salida', pesos[1]))
+archivo=open("pesos.txt","a")
+archivo.write("Nuevo entrenamiento\n")
+archivo.write((to_str('pesos_capa_oculta', pesos[0]))+"\n")
+archivo.write((to_str('pesos_capa_salida', pesos[1]))+"\n")
+archivo.close()
 
 # Graficas datos de entrenamiento
 deltas = nn.get_deltas()
