@@ -1,143 +1,167 @@
-from bdb import Breakpoint
+#Importamos librerias
 import sys
-from timeit import repeat
-from turtle import *
-import turtle #libreria basica
-from unicodedata import name
 from ui_ENCOSOFT import * #interfaz
-from PySide2 import QtCore 
-import serial
-import time
-import numpy as np
+from comunicacion_serial import Comunicacion
+from PySide2.QtCore import QTimer
+import serial, serial.tools.list_ports
 import re
 
-from tkinter import Canvas #grafica
-from unicodedata import name
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-import matplotlib.pyplot as plt
-setup(0, 0, 0, 0)
+#Generamos un hilo
+# Import Library
+from tkinter import *
+# Create Object
+root = Tk()
+# Set title
+root.title("Main Window")
+# Set Geometry
+root.geometry("200x200")
+root.withdraw()
 
-try:
-    ser = serial.Serial ("com4",38400)
-    print("Conectado") 
-             
-except TimeoutError:
-    print ("error")
-finally:
-    print ("done")
-    
-
+#Clase donde se maneja los witgets
 class Incuabdora(QMainWindow):
     def __init__(self) -> None:
         super().__init__()
         self.ui = Ui_MainWindow()
-        self.ui.setupUi(self)  
-        #self.ui.btniniciar.setEnabled()
-        #self.ui.btniniciar.setVisible(False)
-        self.ui.btnentrenar.clicked.connect(self.btn_entrenar)
-        self.ui.btniniciar.clicked.connect(self.btn_Iniciar)
+        self.ui.setupUi(self)
+        #Escondemos los botones 
+        self.ui.btndesconectar.setVisible(False)
         self.ui.btnterminar.setVisible(False)
-        self.ui.btnterminar.clicked.connect(self.btn_terminar)
-        #self.ser= serial.Serial ("com4",38400)
-        ser.close()
-        #grafica
-        #self.grafica=Canvas_grafica()  
-        #self.ui.grafica.addWidget(self.grafica)
-    #///////////////////////////////////////// 
-    def btn_entrenar(self):
-        
-        print("Function 1 is active")
-        import entrenamiento
-        #self.ui.btniniciar.setEnabled(True)
-        #self.ui.btnentrenar.setEnabled(False)
-    #/////////////////////////////////////////
-    def btn_terminar(self):
-        ser.close()
-        print("Cerro conexión")
-        self.ui.btnentrenar.setVisible(True)
+        self.ui.lblverde.setVisible(False)
+        self.ui.lblestado.setText("Estado: Desconectado")
+        self.ui.btniniciar.setEnabled(False)
+        #Establecer comunicación
+        self.serial=Comunicacion()
+        self.puertos_disponible() 
+        #Añadimos las listas al cuadro de lista
+        self.ui.cbxvelocidad.addItems(self.serial.baudrates)
+        self.ui.cbxvelocidad.setCurrentText("38400")
+        #Codigo de botones
+        self.ui.btnconectar.clicked.connect(self.conectar)
+        self.ui.btnactualizar.clicked.connect(self.puertos_disponible)
+        self.ui.btndesconectar.clicked.connect (self.desconectar)
+        self.ui.btniniciar.clicked.connect (self.iniciar)
+        self.ui.btnterminar.clicked.connect (self.terminar)
+    #Funciones
+    def conectar(self):
+        port = self.ui.cbxpuerto.currentText()
+        baud = self.ui.cbxvelocidad.currentText()
+        self.serial.arduino.port=port
+        self.serial.arduino.baudrate=baud
+        self.serial.conexion_serial()
+        self.ui.lblestado.setText("Estado: Conectado")
+        self.ui.lblrojo.setVisible(False)
+        self.ui.lblverde.setVisible(True)
+        self.ui.btndesconectar.setVisible(True)
+        self.ui.btnconectar.setVisible(False)
+        self.ui.btniniciar.setEnabled(True)
+    def desconectar(self):
+        self.serial.desconectar()
+        self.ui.lblestado.setText("Estado: Desconectado")
+        self.ui.lblverde.setVisible(False)
+        self.ui.lblrojo.setVisible(True)
+        self.ui.btndesconectar.setVisible(False)
+        self.ui.btnconectar.setVisible(True)
         self.ui.btnterminar.setVisible(False)
-        
-    #/////////////////////////////////////////
-    def btn_Iniciar(self):
-        ser.open()
+        self.ui.btniniciar.setVisible(True)
+        self.ui.btniniciar.setEnabled(False)   
+    def puertos_disponible(self):
+        self.serial.puertos_disponibles()
+        self.ui.cbxpuerto.clear()
+        self.ui.cbxpuerto.addItems(self.serial.puertos)
+    def iniciar(self):
+        self.serial.conexion_serial()
         self.ui.btnterminar.setVisible(True)
-        self.ui.btnentrenar.setVisible(False)
-        #self.ui.btnterminar.setVisible(True)  
-        
+        self.ui.btniniciar.setVisible(False)
+        self.ui.btnentrenar.setEnabled(False)
         while True:
-                      
-                packet = ser.readline()
-                #print(packet.decode('utf'))
-                a=([float(s) for s in re.findall(r'-?\d+\.?\d*', packet.decode('utf'))])
-                #print(a)
-                for x in range(len(a)-1):
-                    t=(a[0])
-                    h=(a[1])
-                    print (t)
-                    print (h)
-                    self.ui.lbltemperatura.setText(str(t)+" °C")
-                    self.ui.lblhumedad.setText(str(h)+" %")
-                    if (t<36.5):
-                        self.ui.lblfocos.setStyleSheet("background:#FCFFA6;border: 2px solid a000000")
-                        self.ui.lblventilador.setStyleSheet("background:white;border: 2px solid a000000")
-                        self.ui.lbldt.setStyleSheet("background:orange;border: 2px solid a000000")
-                        self.ui.lble.setStyleSheet("background:white;border: 2px solid a000000")
-                        self.ui.lblit.setStyleSheet("background:white;border: 2px solid a000000")
+         #for i in range (1):
+            packet = self.serial.arduino.readline()
+            #print(packet.decode('utf'))
+            a=([float(s) for s in re.findall(r'-?\d+\.?\d*', packet.decode('utf'))])
+            #print(a)
+            for x in range(len(a)-1):
+                t=(a[0])
+                h=(a[1])
+                print (t)
+                print (h)
+                self.ui.lbltemperatura.setText(str(t)+" °C")
+                self.ui.lblhumedad.setText(str(h)+" %")
+                if (t<36.5):
+                    self.ui.lblfocos.setStyleSheet("background:#FCFFA6;border: 2px solid a000000")
+                    self.ui.lblventilador.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
+                    self.ui.lbldt.setStyleSheet("background:orange;border: 2px solid a000000")
+                    self.ui.lble.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
+                    self.ui.lblit.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
                         
                         
+                else:
+                    if (t>37.8):
+                        self.ui.lblventilador.setStyleSheet("background:#B8FFF9;border: 2px solid a000000")
+                        self.ui.lblfocos.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
+                        self.ui.lblit.setStyleSheet("background:red;border: 2px solid a000000")
+                        self.ui.lble.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
+                        self.ui.lbldt.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
                     else:
-                        if (t>37.8):
-                            self.ui.lblventilador.setStyleSheet("background:#B8FFF9;border: 2px solid a000000")
-                            self.ui.lblfocos.setStyleSheet("background:white;border: 2px solid a000000")
-                            self.ui.lblit.setStyleSheet("background:red;border: 2px solid a000000")
-                            self.ui.lble.setStyleSheet("background:white;border: 2px solid a000000")
-                            self.ui.lbldt.setStyleSheet("background:white;border: 2px solid a000000")
-                        else:
-                            if(t>=36.5 and t<=37.8): 
-                                self.ui.lblfocos.setStyleSheet("background:#FCFFA6;border: 2px solid a000000")
-                                self.ui.lblventilador.setStyleSheet("background:white;border: 2px solid a000000")
-                                self.ui.lble.setStyleSheet("background:green;border: 2px solid a000000")
-                                self.ui.lbldt.setStyleSheet("background:white;border: 2px solid a000000")
-                                self.ui.lblit.setStyleSheet("background:white;border: 2px solid a000000")
-                    if (h<55):
-                        print('humedad baja')
-                        self.ui.lbldh.setStyleSheet("background:orange;border: 2px solid a000000")
-                        self.ui.lblfocos.setStyleSheet("background:#FFFDDE;border: 2px solid a000000")
-                        self.ui.lblelectrovalula.setStyleSheet("background:white;border: 2px solid a000000")
-                        self.ui.lblhe.setStyleSheet("background:white;border: 2px solid a000000")
-                        self.ui.lblih.setStyleSheet("background:white;border: 2px solid a000000")
+                        if(t>=36.5 and t<=37.8): 
+                            self.ui.lblfocos.setStyleSheet("background:#FCFFA6;border: 2px solid a000000")
+                            self.ui.lblventilador.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
+                            self.ui.lble.setStyleSheet("background:green;border: 2px solid a000000")
+                            self.ui.lbldt.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
+                            self.ui.lblit.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
+                if (h<55):
+                    print('humedad baja')
+                    self.ui.lbldh.setStyleSheet("background:orange;border: 2px solid a000000")
+                    self.ui.lblfocos.setStyleSheet("background:#FFFDDE;border: 2px solid a000000")
+                    self.ui.lblelectrovalula.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
+                    self.ui.lblhe.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
+                    self.ui.lblih.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
+                else:
+                    if (h>85):
+                        print('humedad alta')
+                        self.ui.lblih.setStyleSheet("background:red;border: 2px solid a000000")
+                        self.ui.lblelectrovalula.setStyleSheet("background:#FF5959;border: 2px solid a000000")
+                        self.ui.lblfocos.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
+                        self.ui.lblhe.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
+                        self.ui.lbldh.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
                     else:
-                        if (h>85):
-                            print('humedad alta')
-                            self.ui.lblih.setStyleSheet("background:red;border: 2px solid a000000")
-                            self.ui.lblelectrovalula.setStyleSheet("background:#FF5959;border: 2px solid a000000")
-                            self.ui.lblfocos.setStyleSheet("background:white;border: 2px solid a000000")
-                            self.ui.lblhe.setStyleSheet("background:white;border: 2px solid a000000")
-                            self.ui.lbldh.setStyleSheet("background:white;border: 2px solid a000000")
-                        else:
-                            if(h>=55 and h<=85):
-                                print('humedad estable') 
-                                self.ui.lblhe.setStyleSheet("background:green;border: 2px solid a000000") 
-                                self.ui.lbldh.setStyleSheet("background:white;border: 2px solid a000000")
-                                self.ui.lblih.setStyleSheet("background:white;border: 2px solid a000000")
-                update()    
-class Canvas_grafica(FigureCanvas):
-    def __init__(self,parent=None):
-      self.fig , self.ax = plt.subplots(1, dpi=100, figsize=(5, 5),
-          sharey=True, facecolor='white') 
-      super().__init__(self.fig)
-      self.fig.suptitle('Grafica de Datos',size=9)
-      np.random. seed(20)
-      y = np.random.randn(150).cumsum()
-      self.ax = plt.axes()
-      plt.plot(y, color='magenta')
-                       
-            
-        
+                        if(h>=55 and h<=85):
+                            print('humedad estable') 
+                            self.ui.lblhe.setStyleSheet("background:green;border: 2px solid a000000") 
+                            self.ui.lbldh.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
+                            self.ui.lblih.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
+            root.update()    
+    def terminar(self):
+        #Escondemos los botones
+        self.serial.desconectar()
+        self.ui.lblestado.setText("Estado: Desconectado")
+        self.ui.lblrojo.setVisible(True)
+        self.ui.lblverde.setVisible(False)
+        self.ui.btndesconectar.setVisible(False)
+        self.ui.btnterminar.setVisible(False)
+        self.ui.btnconectar.setVisible(True)
+        self.ui.btniniciar.setVisible(True)
+        self.ui.btnentrenar.setEnabled(True)
+        self.ui.btniniciar.setEnabled(False)
+        #limpiamos lbls
+        self.ui.lbltemperatura.setText("°C")
+        self.ui.lblhumedad.setText("%")
+        self.ui.lblventilador.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
+        self.ui.lblfocos.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
+        self.ui.lblelectrovalula.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
+        self.ui.lblhe.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
+        self.ui.lble.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
+        self.ui.lbldh.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
+        self.ui.lbldt.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
+        self.ui.lblit.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
+        self.ui.lblih.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
 
-      
+
+
+#Codigo para ejecutar la aplicación
 if __name__ == "__main__":
   app=QApplication(sys.argv)   
   mi_app=Incuabdora()
   mi_app.show()
   sys.exit(app.exec_())   
+# Execute Tkinter
+root.mainloop()
