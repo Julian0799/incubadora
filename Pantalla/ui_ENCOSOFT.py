@@ -847,7 +847,7 @@ class Ui_MainWindow(object):
         self.lblih.setText(QCoreApplication.translate("MainWindow", u"Incremento de la Humedad ", None))
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"Control", None))
         self.lblventilador.setText(QCoreApplication.translate("MainWindow", u"Ventilador", None))
-        self.lblfocos.setText(QCoreApplication.translate("MainWindow", u"Focos", None))
+        self.lblfocos.setText(QCoreApplication.translate("MainWindow", u"Resistencia", None))
         self.lblelectrovalula.setText(QCoreApplication.translate("MainWindow", u"Electrovalvula", None))
         self.btnentrenar.setText(QCoreApplication.translate("MainWindow", u"Entrenar", None))
         self.btnterminar.setText(QCoreApplication.translate("MainWindow", u"Terminar", None))
