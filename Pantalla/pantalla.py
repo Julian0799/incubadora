@@ -5,7 +5,15 @@ from comunicacion_serial import Comunicacion
 from PySide2.QtCore import QTimer
 import serial, serial.tools.list_ports
 import re
-
+import pymongo
+#datos de conexion 
+host="localhost"
+puerto="27017"
+tiempo="1000"
+url="mongodb://"+host+":"+puerto+"/"
+#acceder base de datos
+bd="incubadora"
+tabla="lecturas"
 #Generamos un hilo
 # Import Library
 from tkinter import *
@@ -76,14 +84,55 @@ class Incuabdora(QMainWindow):
         while True:
          #for i in range (1):
             packet = self.serial.arduino.readline()
-            #print(packet.decode('utf'))
+            print(packet.decode('utf'))
             a=([float(s) for s in re.findall(r'-?\d+\.?\d*', packet.decode('utf'))])
-            #print(a)
-            for x in range(len(a)-1):
+            print(a)
+            
+            #b=packet
+            
+            #archivo=open("lecturas.txt","a")
+            
+            #archivo.write((str(b))+"\n")
+            
+            #archivo.close()
+            
+            for x in range(len(a)-9):
                 t=(a[0])
                 h=(a[1])
+                nt=int((a[2]))
+                nh=int((a[3]))
+                sv=int((a[5]))
+                sr=int((a[7]))
+                se=int((a[9]))
                 print (t)
                 print (h)
+                print (nt)
+                print (nh)
+                print (sv)
+                print (sr)
+                print (se)
+                #conexion al servidor
+                try:
+                    cliente=pymongo.MongoClient(url,serverSelectionTimeoutMS=tiempo)
+                    baseDatos=cliente[bd]
+                    datatabla=baseDatos[tabla]
+                    datatabla.insert_one({
+                        "temperatura": t,
+                        "humedad": h,
+                        "nortemp": nt,
+                        "norhum": nh,
+                        "salidav": sv,
+                        "salidar": sr,
+                        "salidae": se
+                    }) 
+                    #cliente.server_info()
+                    #print("conexión a mongo exitosa")
+                    #cliente.close()
+                    
+                except pymongo.errors.ServerSelectionTimeoutError as error_tiempo:
+                    print("tiempo exedido"+error_tiempo)
+                except pymongo.errors.ConnectionFailure as errorConexion:
+                    print("Fallo al conectarse"+errorConexion)
                 self.ui.lbltemperatura.setText(str(t)+" °C")
                 self.ui.lblhumedad.setText(str(h)+" %")
                 if (t<36.5):
@@ -129,6 +178,7 @@ class Incuabdora(QMainWindow):
                             self.ui.lblhe.setStyleSheet("background:green;border: 2px solid a000000") 
                             self.ui.lbldh.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
                             self.ui.lblih.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
+            
             root.update()    
     def terminar(self):
         #Escondemos los botones

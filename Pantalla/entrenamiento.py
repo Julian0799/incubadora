@@ -5,7 +5,17 @@
 # Importar librerias
 import numpy as np                  # Biblioteca para crear vectores y matrices grandes multidimensionales
 import matplotlib.pyplot as plt     # BIblioteca para crear graficos
-
+import pymongo
+#datos de conexion 
+host="localhost"
+puerto="27017"
+tiempo="1000"
+url="mongodb://"+host+":"+puerto+"/"
+#acceder base de datos
+bd="incubadora"
+tabla="lecturas"
+vector=[]
+vector2=[]
 # Creamos la clase del modelo de la red neuronal
 class NeuralNetwork:
     # Rutina: Inicio
@@ -108,27 +118,40 @@ def tanh_derivada(x):
 # Funcion de activacion: tanh
 nn = NeuralNetwork([2,3,3],activation ='tanh')
 
+#conexion al servidor
+try:
+    cliente=pymongo.MongoClient(url,serverSelectionTimeoutMS=tiempo)
+    baseDatos=cliente[bd]
+    datatabla=baseDatos[tabla]
+    #traer entradas
+    for documento in datatabla.find():
+        n=str(documento["nortemp"])
+        m=str(documento["norhum"])
+        val=[int(n),int(m)]
+        vector.append(val)
+    #print(vector)    
+    #traer salidas
+    
+    for documento in datatabla.find():
+        s1=str(documento["salidav"])
+        s2=str(documento["salidar"])
+        s3=str(documento["salidae"])
+        val2=[int(s1),int(s2),int(s3)]
+        vector2.append(val2)
+    #print (vector2)
+               
+except pymongo.errors.ServerSelectionTimeoutError as error_tiempo:
+    print("tiempo exedido"+error_tiempo)
+except pymongo.errors.ConnectionFailure as errorConexion:
+    print("Fallo al conectarse"+errorConexion)
 # Las entradas corresponden a: [Temperatura, Humedad]
-X = np.array([
-              [-1, -1], [-1, 0], [-1, 1],  # 1,2,3
-              [0,  -1], [0,  0], [0,  1],  # 4,5,6
-              [1,  -1], [1,  0], [1,  1],  # 7,8,9
-             ])
+X = np.array(vector)
 
 # Las salidas corresponden a: [Ventilador, Resistencia, Electrovalvula]
-y = np.array([[0,1,1],    # 1
-              [0,1,-1],   # 2
-              [0,1,0],    # 3
-              [-1,-1,1],  # 4 
-              [-1,-1,-1], # 5
-              [-1,-1,0],  # 6
-              [1,0,1],    # 7
-              [1,0,-1],   # 8
-              [1,0,0],    # 9
-             ])
+y = np.array(vector2)
 
 # Entrenar modelo con las entradas y salidas
-nn.fit(X, y, learning_rate=0.03,epochs=50501)
+nn.fit(X, y, learning_rate=0.03,epochs=40001)
 
 # Prediccion de prueba 
 index=0

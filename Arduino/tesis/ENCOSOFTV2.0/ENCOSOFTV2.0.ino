@@ -125,11 +125,14 @@ void loop() {
     }*/
     Serial.println();
     Serial.println("Mediciones>> Temp:" + String(temp) + "C Hum:" + String(hum) + "%");
-    Serial.println("Temp:" + String(temp)+ "°C" + "|" +"Hum:" + String(hum) + "%");
-    Torito.println("Temp:" + String(temp)+ "°C" + "|" +"Hum:" + String(hum) + "%");
+    //Serial.println("Temp:" + String(temp)+ "°C" + "|" +"Hum:" + String(hum) + "%");
     Serial.println("Normalizadas>> Temp:" + String(estado_temp) + " Hum:" + String(estado_hum));
+    
+    
      // Predecir
     Predecir();
+    Serial.println("Salida1:" + String(RNsalidas[0]) + " Salida2:" + String(RNsalidas[1]) + " Salida3:" + String(RNsalidas[2]));
+    Torito.println("Temp:" + String(temp)+ "°C" + "|" +"Hum:" + String(hum) + "% "+"Normalizadas>> Temp:" + String(estado_temp) + " Hum:" + String(estado_hum)+"Salida1:" + String(RNsalidas[0]) + " Salida2:" + String(RNsalidas[1]) + " Salida3:" + String(RNsalidas[2]));    
     // Actuar sobre las salidas
     digitalWrite(pin_ventilador,      estado_ventilador);
     digitalWrite(pin_resistencia,     estado_resistencia);
@@ -198,8 +201,8 @@ void Predecir() {
   RNsalidas[0] = round(capa_salida[0]);
   RNsalidas[1] = round(capa_salida[1]);
   RNsalidas[2] = round(capa_salida[2]);
-  Serial.println("Salida1:" + String(RNsalidas[0]) + " Salida2:" + String(RNsalidas[1]) + " Salida3:" + String(RNsalidas[2]));
-
+  
+   
   // Definir estados de los actuadores
   if (RNsalidas[0] != -1) {
     estado_ventilador     = RNsalidas[0];
