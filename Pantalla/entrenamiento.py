@@ -32,7 +32,7 @@ class NeuralNetwork:
         # Inicializar los pesos
         self.weights = []
         self.deltas = []
-        # Capas = [2,3,4]
+        # Capas = [2,3,3]
         # asigno valores aleatorios (-1,1) a capa de entrada y capa oculta
         for i in range(1, len(layers) - 1):
             r = 2*np.random.random((layers[i-1] + 1, layers[i] + 1)) -1
@@ -116,7 +116,7 @@ def tanh_derivada(x):
 # Capa de oculta:  3 neuronas
 # Capa de salida:  3 neuronas 
 # Funcion de activacion: tanh
-nn = NeuralNetwork([2,3,3],activation ='tanh')
+nn = NeuralNetwork([2,35,3],activation ='tanh')
 
 #conexion al servidor
 try:
@@ -151,7 +151,7 @@ X = np.array(vector)
 y = np.array(vector2)
 
 # Entrenar modelo con las entradas y salidas
-nn.fit(X, y, learning_rate=0.03,epochs=40001)
+nn.fit(X, y, learning_rate=0.03,epochs=50001)
 
 # Prediccion de prueba 
 index=0
