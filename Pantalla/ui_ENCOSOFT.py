@@ -18,7 +18,9 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(1465, 921)
-        MainWindow.setAutoFillBackground(False)
+        icon = QIcon()
+        icon.addFile(u"../Pantalla/images/logo.png", QSize(), QIcon.Normal, QIcon.Off)
+        MainWindow.setWindowIcon(icon)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.horizontalLayout = QHBoxLayout(self.centralwidget)
@@ -109,7 +111,7 @@ class Ui_MainWindow(object):
         font2.setPointSize(10)
         self.label_12.setFont(font2)
         self.label_12.setStyleSheet(u"color: rgb(255, 255, 255);")
-        self.label_12.setPixmap(QPixmap(u"../incubadora/Pantalla/images/logo.png"))
+        self.label_12.setPixmap(QPixmap(u"../Pantalla/images/logo.png"))
         self.label_12.setScaledContents(True)
 
         self.horizontalLayout_8.addWidget(self.label_12)
@@ -360,7 +362,7 @@ class Ui_MainWindow(object):
         self.label_7.setObjectName(u"label_7")
         self.label_7.setMaximumSize(QSize(150, 150))
         self.label_7.setLayoutDirection(Qt.LeftToRight)
-        self.label_7.setPixmap(QPixmap(u"../incubadora/Pantalla/images/Recurso3.png"))
+        self.label_7.setPixmap(QPixmap(u"../Pantalla/images/Recurso3.png"))
         self.label_7.setScaledContents(True)
         self.label_7.setAlignment(Qt.AlignCenter)
         self.label_7.setWordWrap(False)
@@ -403,7 +405,7 @@ class Ui_MainWindow(object):
         self.label_8.setObjectName(u"label_8")
         self.label_8.setMaximumSize(QSize(150, 150))
         self.label_8.setFrameShadow(QFrame.Raised)
-        self.label_8.setPixmap(QPixmap(u"../incubadora/Pantalla/images/Recurso1.5.png"))
+        self.label_8.setPixmap(QPixmap(u"../Pantalla/images/Recurso1.5.png"))
         self.label_8.setScaledContents(True)
         self.label_8.setAlignment(Qt.AlignCenter)
 
@@ -445,7 +447,7 @@ class Ui_MainWindow(object):
         self.lblverde = QLabel(self.frame_17)
         self.lblverde.setObjectName(u"lblverde")
         self.lblverde.setMaximumSize(QSize(25, 30))
-        self.lblverde.setPixmap(QPixmap(u"../incubadora/Pantalla/images/verde.png"))
+        self.lblverde.setPixmap(QPixmap(u"../Pantalla/images/verde.png"))
         self.lblverde.setScaledContents(True)
 
         self.horizontalLayout_7.addWidget(self.lblverde)
@@ -453,7 +455,7 @@ class Ui_MainWindow(object):
         self.lblrojo = QLabel(self.frame_17)
         self.lblrojo.setObjectName(u"lblrojo")
         self.lblrojo.setMaximumSize(QSize(25, 30))
-        self.lblrojo.setPixmap(QPixmap(u"../incubadora/Pantalla/images/rojo.png"))
+        self.lblrojo.setPixmap(QPixmap(u"../Pantalla/images/rojo.png"))
         self.lblrojo.setScaledContents(True)
 
         self.horizontalLayout_7.addWidget(self.lblrojo)
@@ -817,7 +819,7 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"ENCOSOFT", None))
         self.label_10.setText(QCoreApplication.translate("MainWindow", u"Gesti\u00f3n de Incubadora", None))
         self.label_11.setText("")
         self.label_12.setText("")
