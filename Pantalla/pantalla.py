@@ -90,7 +90,7 @@ class Incuabdora(QMainWindow):
             packet = self.serial.arduino.readline()
             print(packet.decode('utf'))
             a=([float(s) for s in re.findall(r'-?\d+\.?\d*', packet.decode('utf'))])
-            print(a)
+            
             
             #b=packet
             
