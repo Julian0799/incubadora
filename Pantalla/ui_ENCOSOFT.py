@@ -109,7 +109,7 @@ class Ui_MainWindow(object):
         font2.setPointSize(10)
         self.label_12.setFont(font2)
         self.label_12.setStyleSheet(u"color: rgb(255, 255, 255);")
-        self.label_12.setPixmap(QPixmap(u"../incubadora/Pantalla/images/logo.png"))
+        self.label_12.setPixmap(QPixmap(u"../Incubadora/incubadora/Pantalla/images/logo.png"))
         self.label_12.setScaledContents(True)
 
         self.horizontalLayout_8.addWidget(self.label_12)
@@ -360,7 +360,7 @@ class Ui_MainWindow(object):
         self.label_7.setObjectName(u"label_7")
         self.label_7.setMaximumSize(QSize(150, 150))
         self.label_7.setLayoutDirection(Qt.LeftToRight)
-        self.label_7.setPixmap(QPixmap(u"../incubadora/Pantalla/images/Recurso3.png"))
+        self.label_7.setPixmap(QPixmap(u"../../Incubadora_Tesis/Pantalla/images/Recurso3.png"))
         self.label_7.setScaledContents(True)
         self.label_7.setAlignment(Qt.AlignCenter)
         self.label_7.setWordWrap(False)
@@ -403,7 +403,7 @@ class Ui_MainWindow(object):
         self.label_8.setObjectName(u"label_8")
         self.label_8.setMaximumSize(QSize(150, 150))
         self.label_8.setFrameShadow(QFrame.Raised)
-        self.label_8.setPixmap(QPixmap(u"../incubadora/Pantalla/images/Recurso1.5.png"))
+        self.label_8.setPixmap(QPixmap(u"../../Incubadora_Tesis/Pantalla/images/Recurso1.5.png"))
         self.label_8.setScaledContents(True)
         self.label_8.setAlignment(Qt.AlignCenter)
 
@@ -445,7 +445,7 @@ class Ui_MainWindow(object):
         self.lblverde = QLabel(self.frame_17)
         self.lblverde.setObjectName(u"lblverde")
         self.lblverde.setMaximumSize(QSize(25, 30))
-        self.lblverde.setPixmap(QPixmap(u"../incubadora/Pantalla/images/verde.png"))
+        self.lblverde.setPixmap(QPixmap(u"../../Incubadora_Tesis/Pantalla/images/verde.png"))
         self.lblverde.setScaledContents(True)
 
         self.horizontalLayout_7.addWidget(self.lblverde)
@@ -453,7 +453,7 @@ class Ui_MainWindow(object):
         self.lblrojo = QLabel(self.frame_17)
         self.lblrojo.setObjectName(u"lblrojo")
         self.lblrojo.setMaximumSize(QSize(25, 30))
-        self.lblrojo.setPixmap(QPixmap(u"../incubadora/Pantalla/images/rojo.png"))
+        self.lblrojo.setPixmap(QPixmap(u"../../Incubadora_Tesis/Pantalla/images/rojo.png"))
         self.lblrojo.setScaledContents(True)
 
         self.horizontalLayout_7.addWidget(self.lblrojo)

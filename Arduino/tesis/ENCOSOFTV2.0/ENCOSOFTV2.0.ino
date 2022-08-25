@@ -27,7 +27,7 @@ Adafruit_MLX90614 termometroIR = Adafruit_MLX90614();
 /////////////////////// <-- Control del servomotor --> /////////////////////////
 Servo servoMotor;
 /////////////////////// <-- Definicion de constantes --> ///////////////////////
-#define temp_min              35      // Valor minimo de Temperatua
+#define temp_min              34      // Valor minimo de Temperatua
 #define temp_max              36      // Valor maximo de Temperatura
 #define hum_min               55        // Valor minimo de Humedad 
 #define hum_max               85        // Valor maximo de Humedad
@@ -83,9 +83,9 @@ void setup() {
   esp8266.begin(115200);
   // Iniciar puerto serial Bluethoo
   Torito.begin(38400);
-  /*sendCommand("AT",5,"OK");
+  sendCommand("AT",5,"OK");
   sendCommand("AT+CWMODE=1",5,"OK");
-  sendCommand("AT+CWJAP=\""+ AP +"\",\""+ PASS +"\"",20,"OK");*/
+  sendCommand("AT+CWJAP=\""+ AP +"\",\""+ PASS +"\"",20,"OK");
   //indicamos que es una pantalla lcd 16x2
   // Inicializar el LCD con el número de  columnas y filas del LCD
   lcd.begin(16, 2);
@@ -140,9 +140,9 @@ void loop() {
     digitalWrite(pin_resistencia,     estado_resistencia);
     digitalWrite(pin_electrovalvula,  estado_electrovalvula); 
     Torito.println("Temp:" + String(temp)+ "°C" + "|" +"Hum:" + String(hum) + "% "+"Normalizadas>> Temp:" + String(estado_temp) + " Hum:" + String(estado_hum)+"Salida1:" + String(RNsalidas[0]) + " Salida2:" + String(RNsalidas[1]) + " Salida3:" + String(RNsalidas[2]));      
-    Serial.print(estado_ventilador);
+    /*Serial.print(estado_ventilador);
     Serial.print(estado_resistencia);    
-    Serial.print(estado_electrovalvula);
+    Serial.print(estado_electrovalvula);*/
     lcd.clear () ;
     lcd.setCursor (0, 0);
     lcd.print ("Temp: ");
@@ -152,7 +152,7 @@ void loop() {
     lcd.print ("Hum: ");
     lcd.setCursor (6, 1);
     lcd.print (String(hum) + "%");
-    /*if((millis()-tiempo_anterior)>= 1500){ //3600000
+    if((millis()-tiempo_anterior)>= 1500){ //3600000
       tiempo_anterior=millis();
       String getData = "GET /update?api_key="+ API +"&"+ field +"="+String(temp)+"&"+ field2 +"="+String(hum);;
       sendCommand("AT+CIPMUX=1",5,"OK");
@@ -162,7 +162,7 @@ void loop() {
       delay(1500);
       countTrueCommand++;
       sendCommand("AT+CIPCLOSE=0",5,"OK");
-    }*/
+    }
     
     
    

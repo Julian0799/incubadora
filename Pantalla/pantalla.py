@@ -104,13 +104,7 @@ class Incuabdora(QMainWindow):
                 sv=int((a[5]))
                 sr=int((a[7]))
                 se=int((a[9]))
-                print (t)
-                print (h)
-                print (nt)
-                print (nh)
-                print (sv)
-                print (sr)
-                print (se)
+                
                 #conexion al servidor
                 try:
                     cliente=pymongo.MongoClient(url,serverSelectionTimeoutMS=tiempo)
