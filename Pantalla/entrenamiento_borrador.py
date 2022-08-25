@@ -116,6 +116,7 @@ def tanh_derivada(x):
 # Capa de oculta:  3 neuronas
 # Capa de salida:  3 neuronas 
 # Funcion de activacion: tanh
+
 nn = NeuralNetwork([2,35,3],activation ='tanh')
 
 #conexion al servidor

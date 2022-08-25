@@ -49,7 +49,11 @@ class Incuabdora(QMainWindow):
         self.ui.btndesconectar.clicked.connect (self.desconectar)
         self.ui.btniniciar.clicked.connect (self.iniciar)
         self.ui.btnterminar.clicked.connect (self.terminar)
+        self.ui.btnentrenar.clicked.connect (self.entrenar)
     #Funciones
+    def entrenar(self):
+        import os
+        os.system('python datos_entrenamiento.py')
     def conectar(self):
         port = self.ui.cbxpuerto.currentText()
         baud = self.ui.cbxvelocidad.currentText()
