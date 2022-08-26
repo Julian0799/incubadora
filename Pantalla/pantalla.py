@@ -91,7 +91,7 @@ class Incuabdora(QMainWindow):
             print(packet.decode('utf'))
             a=([float(s) for s in re.findall(r'-?\d+\.?\d*', packet.decode('utf'))])
             
-            
+            print(a)
             #b=packet
             
             #archivo=open("lecturas.txt","a")

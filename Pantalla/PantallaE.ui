@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>318</width>
-    <height>182</height>
+    <height>176</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -67,7 +67,7 @@
    <widget class="QPushButton" name="btnenviar">
     <property name="geometry">
      <rect>
-      <x>230</x>
+      <x>170</x>
       <y>140</y>
       <width>75</width>
       <height>23</height>
@@ -80,7 +80,7 @@
    <widget class="QPushButton" name="btnentrenar">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>50</x>
       <y>140</y>
       <width>75</width>
       <height>23</height>
@@ -88,6 +88,48 @@
     </property>
     <property name="text">
      <string>Entrenar</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblmensaje">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>10</y>
+      <width>261</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Myanmar Text</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+color:rgb(255, 85, 0)
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnactualizar">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>140</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Actualizar</string>
     </property>
    </widget>
   </widget>
