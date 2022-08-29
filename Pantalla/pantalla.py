@@ -104,7 +104,9 @@ class Incuabdora(QMainWindow):
             
             for x in range(len(a)-9):
                 t=(a[0])
+                
                 h=(a[1])
+                
                 nt=int((a[2]))
                 nh=int((a[3]))
                 sv=int((a[5]))
@@ -206,7 +208,7 @@ class Incuabdora(QMainWindow):
         self.ui.lbldt.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
         self.ui.lblit.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
         self.ui.lblih.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
-        root.update() 
+        
 
 
 
