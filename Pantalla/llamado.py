@@ -5,7 +5,5 @@ print(a)"""
 import serial,time
 ser=serial.Serial('COM6',38400)
 print("conectado")
-ser.write(b'1')
-print("enviado")
 
 

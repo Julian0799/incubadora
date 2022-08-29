@@ -9,7 +9,7 @@ class Comunicacion(QObject):
     def __init__(self):
         super().__init__()
         self.arduino= serial.Serial()
-        self.arduino.timeout= 0.5
+        self.arduino.timeout= 2
 
         self.baudrates = ['1200', '2400', '4800', '9600', '19200', '38400', '115200']
         self.puertos =[]
@@ -24,6 +24,7 @@ class Comunicacion(QObject):
     def conexion_serial(self):
         try:
             self.arduino.open()
+            print('si Conectar')
         except:
             print('Error al Conectar')
 

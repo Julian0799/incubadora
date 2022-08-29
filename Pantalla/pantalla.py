@@ -6,14 +6,7 @@ from PySide2.QtCore import QTimer
 import serial, serial.tools.list_ports
 import re
 import pymongo
-#datos de conexion 
-host="localhost"
-puerto="27017"
-tiempo="1000"
-url="mongodb://"+host+":"+puerto+"/"
-#acceder base de datos
-bd="incubadora"
-tabla="lecturas"
+
 #Generamos un hilo
 # Import Library
 from tkinter import *
@@ -24,7 +17,14 @@ root.title("Main Window")
 # Set Geometry
 root.geometry("200x200")
 root.withdraw()
-
+#datos de conexion 
+host="localhost"
+puerto="27017"
+tiempo="2000"
+url="mongodb://"+host+":"+puerto+"/"
+#acceder base de datos
+bd="incubadora"
+tabla="lecturas"
 #Clase donde se maneja los witgets
 class Incuabdora(QMainWindow):
     def __init__(self) -> None:
@@ -85,6 +85,8 @@ class Incuabdora(QMainWindow):
         self.ui.btnterminar.setVisible(True)
         self.ui.btniniciar.setVisible(False)
         self.ui.btnentrenar.setEnabled(False)
+        self.ui.cbxpuerto.setEnabled(False)
+        self.ui.cbxvelocidad.setEnabled(False)
         while True:
          #for i in range (1):
             packet = self.serial.arduino.readline()
@@ -181,6 +183,8 @@ class Incuabdora(QMainWindow):
     def terminar(self):
         #Escondemos los botones
         self.serial.desconectar()
+        self.ui.cbxpuerto.setEnabled(True)
+        self.ui.cbxvelocidad.setEnabled(True)
         self.ui.lblestado.setText("Estado: Desconectado")
         self.ui.lblrojo.setVisible(True)
         self.ui.lblverde.setVisible(False)
@@ -202,6 +206,7 @@ class Incuabdora(QMainWindow):
         self.ui.lbldt.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
         self.ui.lblit.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
         self.ui.lblih.setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(36, 40, 46);border: 2px solid a000000")
+        root.update() 
 
 
 
