@@ -335,9 +335,9 @@ void setup() {
   esp8266.begin(115200);
   // Iniciar puerto serial Bluethoo
   Torito.begin(38400);
-  /*sendCommand("AT",5,"OK");
+  sendCommand("AT",5,"OK");
   sendCommand("AT+CWMODE=1",5,"OK");
-  sendCommand("AT+CWJAP=\""+ AP +"\",\""+ PASS +"\"",20,"OK");*/
+  sendCommand("AT+CWJAP=\""+ AP +"\",\""+ PASS +"\"",20,"OK");
   //indicamos que es una pantalla lcd 16x2
   // Inicializar el LCD con el número de  columnas y filas del LCD
   lcd.begin(16, 2);
@@ -405,7 +405,7 @@ void loop() {
     lcd.print ("Hum: ");
     lcd.setCursor (6, 1);
     lcd.print (String(hum) + "%");
-    /*if((millis()-tiempo_anterior)>= 1500){ //3600000
+    if((millis()-tiempo_anterior)>= 1500){ //3600000
       tiempo_anterior=millis();
       String getData = "GET /update?api_key="+ API +"&"+ field +"="+String(temp)+"&"+ field2 +"="+String(hum);;
       sendCommand("AT+CIPMUX=1",5,"OK");
@@ -416,7 +416,7 @@ void loop() {
       countTrueCommand++;
       sendCommand("AT+CIPCLOSE=0",5,"OK");
     }
-    */
+    
     
    
     
