@@ -147,7 +147,7 @@ void loop() {
       digitalWrite(pin_electrovalvula, estado_electrovalvula );  
     }*/
      
-    Torito.println("Temp:" + String(temp)+ "C" + "|" +"Hum:" + String(hum) + "% \n"+"Normalizadas>> Temp:" + String(estado_temp) + " Hum:" + String(estado_hum)+"Salida1:" + String(RNsalidas[0]) + " Salida2:" + String(RNsalidas[1]) + " Salida3:" + String(RNsalidas[2])); 
+    Torito.println("Temp:" + String(temp)+ "C" + "|" +"Hum:" + String(hum) + "%"+"Normalizadas>> Temp:" + String(estado_temp) + " Hum:" + String(estado_hum)+"Salida1:" + String(RNsalidas[0]) + " Salida2:" + String(RNsalidas[1]) + " Salida3:" + String(RNsalidas[2])); 
           
     Serial.print(estado_ventilador);
     Serial.print(estado_resistencia);  
