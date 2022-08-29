@@ -1,9 +1,9 @@
 #Importamos librerias
 import sys
 from ui_PantallaE import * #interfaz
-from comunicacion_serial import Comunicacion
+
 from PySide2.QtCore import QTimer
-import serial, serial.tools.list_ports
+
 import re
 # Importar librerias
 import numpy as np                  # Biblioteca para crear vectores y matrices grandes multidimensionales
@@ -62,6 +62,7 @@ class Entrenar(QMainWindow):
             self.ui.lblniter.setText('')
             self.ui.lblnneuro.setText('')  
             self.ui.lblmensaje.setText("")
+            self.ui.lblmensaje.setText("Entrenando ...")
             
         else:
             self.ui.lblmensaje.setText("INCORRECTO")
@@ -76,6 +77,7 @@ class Entrenar(QMainWindow):
         self.ui.btnactualizar.setVisible(False)
         self.ui.lblniter.setEnabled(True)
         self.ui.lblnneuro.setEnabled(True)
+        self.ui.lblmensaje.setText('')
     
     def entrenar (self):
         global val
@@ -109,7 +111,9 @@ class Entrenar(QMainWindow):
                 self.weights.append(r)
 
             # Rutina: Entrenar modelo
+            
             def fit(self, X, y, learning_rate=0.2, epochs=100000):
+              
                 # Agrego columna de unos a las entradas X
                 # Con esto agregamos la unidad de Bias a la capa de entrada
                 ones = np.atleast_2d(np.ones(X.shape[0]))
@@ -192,7 +196,7 @@ class Entrenar(QMainWindow):
             contador=contador+1
         
         nn = NeuralNetwork([2,contador,3],activation ='tanh')
-
+        
         #conexion al servidor
         try:
             cliente=pymongo.MongoClient(url,serverSelectionTimeoutMS=tiempo)
@@ -231,6 +235,7 @@ class Entrenar(QMainWindow):
         # Prediccion de prueba 
         index=0
         for e in X:
+            
             prediccion = nn.predict(e)
             print("X:",e,"esperado:",y[index],"obtenido:",  (int)(round(prediccion[0])), (int)(round(prediccion[1])), (int)(round(prediccion[2])))
             #print("X:",e,"y:",y[index],"Network:",prediccion)
@@ -569,6 +574,7 @@ void Servot() {
         self.ui.btnenviar.setVisible(True)
         self.ui.lblniter.setEnabled(True)
         self.ui.lblnneuro.setEnabled(True)
+        self.ui.lblmensaje.setText("Entrenado")
         
     
 
