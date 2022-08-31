@@ -6,7 +6,7 @@ from PySide2.QtCore import QTimer
 import serial, serial.tools.list_ports
 import re
 import pymongo
-
+from datetime import datetime
 #Generamos un hilo
 # Import Library
 from tkinter import *
@@ -90,7 +90,7 @@ class Incuabdora(QMainWindow):
         while True:
          #for i in range (1):
             packet = self.serial.arduino.readline()
-            print(packet.decode('utf'))
+            #print(packet.decode('utf'))
             a=([float(s) for s in re.findall(r'-?\d+\.?\d*', packet.decode('utf'))])
             
             print(a)
@@ -112,13 +112,17 @@ class Incuabdora(QMainWindow):
                 sv=int((a[5]))
                 sr=int((a[7]))
                 se=int((a[9]))
-                
+                ahora=datetime.now()
+                hora=ahora.strftime('%H:%M:%S')
+                dia=datetime.today().strftime('%A')
                 #conexion al servidor
                 try:
                     cliente=pymongo.MongoClient(url,serverSelectionTimeoutMS=tiempo)
                     baseDatos=cliente[bd]
                     datatabla=baseDatos[tabla]
                     datatabla.insert_one({
+                        "dia":dia,
+                        "hora":hora,
                         "temperatura": t,
                         "humedad": h,
                         "nortemp": nt,
