@@ -34,11 +34,11 @@ Adafruit_MLX90614 termometroIR = Adafruit_MLX90614();
 /////////////////////// <-- Control del servomotor --> /////////////////////////
 Servo servoMotor;
 /////////////////////// <-- Definicion de constantes --> ///////////////////////
-#define temp_min              36.5      // Valor minimo de Temperatua
-#define temp_max              37.8      // Valor maximo de Temperatura
+#define temp_min              37.25      // Valor minimo de Temperatua
+#define temp_max              37.3      // Valor maximo de Temperatura
 #define hum_min               55        // Valor minimo de Humedad 
 #define hum_max               85        // Valor maximo de Humedad
-#define tiempo_intervalo      3000       // Cada 100ms predecir con la red neuronal
+#define tiempo_intervalo      1500       // Cada 100ms predecir con la red neuronal
 
 double capa_oculta[neuronas_capa_oculta];
 double capa_salida[neuronas_capa_salida];
@@ -161,24 +161,23 @@ void loop() {
     lcd.print ("Hum: ");
     lcd.setCursor (6, 1);
     lcd.print (String(hum) + "%");
-    if((millis()-tiempo_anterior)>= 1500){ //3600000
+    
+    
+    
+   
+    
+  }
+  /*if((millis()-tiempo_anterior)>= 1500){ //3600000
       tiempo_anterior=millis();
       String getData = "GET /update?api_key="+ API +"&"+ field +"="+String(temp)+"&"+ field2 +"="+String(hum);;
       sendCommand("AT+CIPMUX=1",5,"OK");
       sendCommand("AT+CIPSTART=0,\"TCP\",\""+ HOST +"\","+ PORT,15,"OK");
       sendCommand("AT+CIPSEND=0," +String(getData.length()+4),4,">");
       esp8266.println(getData);
-      delay(1500);
       countTrueCommand++;
       sendCommand("AT+CIPCLOSE=0",5,"OK");
     }
-    
-    
-   
-    
-  }
-  
-  
+  */
    
 }
 
